@@ -15,10 +15,10 @@ const printData = (allData) => {
 const dataFactory = data => `<section>${data.name}</section>`;
 
 // renders data HTML to the DOM
-const addDataToDom = dataHTML =>{
+const addDataToDom = dataHTML => {
     const container = document.querySelector("#container");
     container.innerHTML += dataHTML;
-}
+};
 
 // Fetch data from url
 fetch(url)
@@ -26,10 +26,11 @@ fetch(url)
     .then(response /* taco */ => response.json())/*Take response and convert/parse it to json */
     // get access to json data
     .then(jsonData /* holds data of json (taco) */=> {
-        /* // Will console log value of data variable
-        printData(jsonData); */
+        // for each data point
         jsonData.forEach(data => {
+            // run dataFactory to create HTML with data
             const dataHTML = dataFactory(data);
+            // Renders dateHTML to the DOM
             addDataToDom(dataHTML);
         });
 
